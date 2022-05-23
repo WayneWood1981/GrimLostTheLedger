@@ -14,8 +14,8 @@ public class ButtonManager : MonoBehaviour
 
     public void PlayPressed()
     {
-        Debug.Log("Play");
-        //SceneManager.LoadScene(1);
+        
+        SceneManager.LoadScene(1);
     }
 
     public void HowToPressed()

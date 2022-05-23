@@ -370,9 +370,10 @@ GameObject:
   - component: {fileID: 2611503895770517833}
   - component: {fileID: 2631923437999154059}
   - component: {fileID: 226627379}
+  - component: {fileID: 4831676679927547935}
   m_Layer: 0
   m_Name: Grass Block
-  m_TagString: Grass
+  m_TagString: Start
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -453,8 +454,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1.4590772, z: 1.0000001}
-  m_Center: {x: 1.4210853e-14, y: -0.27046138, z: -0.000000059604645}
+  m_Size: {x: 1, y: 1.4291728, z: 1.0000001}
+  m_Center: {x: -2.019484e-28, y: -0.28541362, z: -0.000000059604645}
 --- !u!114 &226627379
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -467,6 +468,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa76cf6593371474bac9e4e308ed7f22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &4831676679927547935
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2623351499577044809}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.0000002, y: 1.0000001, z: 1.0000004}
+  m_Center: {x: 0, y: -0.49999997, z: -0.00000005960466}
 --- !u!1 &2655055065864894006
 GameObject:
   m_ObjectHideFlags: 0
@@ -477,6 +491,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2655055065864894007}
   - component: {fileID: 430493294}
+  - component: {fileID: 9160018841647988100}
   m_Layer: 0
   m_Name: StartCoup
   m_TagString: Start
@@ -519,8 +534,111 @@ MonoBehaviour:
   chicken: {fileID: 1311290861401530, guid: 312b31977ed9b2d48a14849ebb8c7fb3, type: 3}
   chickenSpawnPoint: {fileID: 32860141}
   chickensToSpawn: 20
+  spawnSounds:
+  - {fileID: 8300000, guid: 678a406f93b3a4548aefcd80172a5eaa, type: 3}
+  - {fileID: 8300000, guid: 9a0fced6a0d15ff40b108724feec6dd0, type: 3}
+  - {fileID: 8300000, guid: e84e8190824cd75439b48f2264f487e0, type: 3}
+  - {fileID: 8300000, guid: 11fc768e1df3f0b4285508b4caaf0d20, type: 3}
+  - {fileID: 8300000, guid: af8bd64030cb0f64baffe2f3a405494c, type: 3}
+  escapedChicken: {fileID: 0}
   spawnSpeed: 3
-  hasStartedSpawning: 1
+  hasStartedSpawning: 0
+--- !u!82 &9160018841647988100
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2655055065864894006}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 2
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &6860864196119871628
 GameObject:
   m_ObjectHideFlags: 0
@@ -533,9 +651,9 @@ GameObject:
   - component: {fileID: 6860864196118584460}
   - component: {fileID: 6860864196117618252}
   - component: {fileID: 4078314687053684399}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: "\u0421hicken\u0421oop_01"
-  m_TagString: Untagged
+  m_TagString: Start
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

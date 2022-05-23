@@ -16,22 +16,31 @@ public class GameManager : MonoBehaviour
     [SerializeField] public int _boilNumber;
     [SerializeField] public int chickenNumber;
 
+    [HideInInspector]
     [SerializeField] private GameObject wonUI;
+    [HideInInspector]
     [SerializeField] private GameObject LostUI;
 
+    [HideInInspector]
     public int amountOfArrows;
 
     [SerializeField] public int amountOfTurns;
 
     public int turnsLeft;
 
+    [HideInInspector]
     [SerializeField] Texture2D chickenLeg;
 
+    [HideInInspector]
     public bool isGameOver;
 
+    [HideInInspector]
     public int sawTrapKills = 0;
+    [HideInInspector]
     public int spikeTrapKills = 0;
+    [HideInInspector]
     public int fireTrapKills = 0;
+    [HideInInspector]
     public int boilerTrapKills = 0;
 
     // Start is called before the first frame update
@@ -51,7 +60,7 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         playerTurns.text = turnsLeft.ToString();
-        Debug.Log(sawTrapKills);
+        
         if(chickenNumber == 0)
         {
             isGameOver = true;

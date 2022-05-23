@@ -6,6 +6,10 @@ public class MouseManager : MonoBehaviour
 {
     [SerializeField] GameManager gameManager;
 
+    private AudioSource audioSource;
+
+    private MouseAudioScript mouseAudioScript;
+
     public int turnCount;
 
     List<BlockCounter> blocks;
@@ -14,6 +18,9 @@ public class MouseManager : MonoBehaviour
     void Start()
     {
         blocks = new List<BlockCounter>();
+        audioSource = GetComponent<AudioSource>();
+        mouseAudioScript = GetComponent<MouseAudioScript>();
+
     }
 
     // Update is called once per frame
@@ -42,12 +49,14 @@ public class MouseManager : MonoBehaviour
                                 gameManager.turnsLeft -= 1;
                                 turnCount = blocks.Count;
                                 blocksCounter.AddCountToBlock();
+                                audioSource.PlayOneShot(mouseAudioScript.pops[blocksCounter.blockCount]);
                             }
                             
                         }
                         else
                         {
                             blocksCounter.GetComponentInChildren<Animator>().SetTrigger("OnShake");
+                            audioSource.PlayOneShot(mouseAudioScript.error);
                             return;
                         }
                             
@@ -63,11 +72,12 @@ public class MouseManager : MonoBehaviour
                             gameManager.turnsLeft += 1;
                             turnCount = blocks.Count;
                             blocksCounter.AddCountToBlock();
+                            audioSource.PlayOneShot(mouseAudioScript.pops[blocksCounter.blockCount]);
                         }
                         else
                         {
                             blocksCounter.AddCountToBlock();
-
+                            audioSource.PlayOneShot(mouseAudioScript.pops[blocksCounter.blockCount]);
                         }
                         
 
@@ -75,6 +85,12 @@ public class MouseManager : MonoBehaviour
                     
 
                     hit.transform.GetComponentInChildren<Animator>().SetTrigger("OnClick");
+                }
+
+                if(hit.transform.tag == "Start")
+                {
+                   
+                    hit.transform.GetComponentInParent<ChickenCoup>().hasStartedSpawning = true;
                 }
                 
             }
