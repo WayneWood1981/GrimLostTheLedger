@@ -5,16 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class ButtonManager : MonoBehaviour
 {
-    [SerializeField] Texture2D chickenLeg;
+    [SerializeField] Texture2D zombieCursor;
     // Start is called before the first frame update
     void Start()
     {
-        Cursor.SetCursor(chickenLeg, Vector2.zero, cursorMode: CursorMode.ForceSoftware);
+        Cursor.SetCursor(zombieCursor, Vector2.zero, cursorMode: CursorMode.ForceSoftware);
     }
 
     public void PlayPressed()
     {
-        
+
         SceneManager.LoadScene(1);
     }
 
@@ -22,9 +22,6 @@ public class ButtonManager : MonoBehaviour
     {
         Debug.Log("How");
     }
-
-    public void SettingsPressed()
-    {
-        Debug.Log("Settings");
-    }
 }
+
+    

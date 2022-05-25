@@ -10,11 +10,12 @@ public class GameManager : MonoBehaviour
     [SerializeField] MouseManager mouseManager;
     [SerializeField] TextMeshProUGUI playerTurns;
 
+    [SerializeField] public int _SendToHeavenNumber;
     [SerializeField] public int _sawNumber;
     [SerializeField] public int _flameNumber;
     [SerializeField] public int _spikeNumber;
     [SerializeField] public int _boilNumber;
-    [SerializeField] public int chickenNumber;
+    [SerializeField] public int deadGuyNumber;
 
     [HideInInspector]
     [SerializeField] private GameObject wonUI;
@@ -35,6 +36,8 @@ public class GameManager : MonoBehaviour
     public bool isGameOver;
 
     [HideInInspector]
+    public int sendToHeavens = 0;
+    [HideInInspector]
     public int sawTrapKills = 0;
     [HideInInspector]
     public int spikeTrapKills = 0;
@@ -46,12 +49,13 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        
+        deadGuyNumber = _SendToHeavenNumber + _sawNumber + _flameNumber + _spikeNumber + _boilNumber;
     }
 
     private void Start()
     {
         Cursor.SetCursor(chickenLeg, Vector2.zero, cursorMode: CursorMode.ForceSoftware);
+        
         turnsLeft = amountOfTurns;
         playerTurns.text = turnsLeft.ToString();
     }
@@ -61,7 +65,7 @@ public class GameManager : MonoBehaviour
     {
         playerTurns.text = turnsLeft.ToString();
         
-        if(chickenNumber == 0)
+        if(deadGuyNumber == 0)
         {
             isGameOver = true;
             if (hasPlayerWon())
@@ -80,7 +84,7 @@ public class GameManager : MonoBehaviour
 
     private bool hasPlayerWon()
     {
-        if (sawTrapKills == _sawNumber && fireTrapKills == _flameNumber && spikeTrapKills == _spikeNumber && boilerTrapKills == _boilNumber)
+        if (sawTrapKills == _sawNumber && fireTrapKills == _flameNumber && spikeTrapKills == _spikeNumber && boilerTrapKills == _boilNumber && _SendToHeavenNumber == sendToHeavens)
         {
             return true;
         }

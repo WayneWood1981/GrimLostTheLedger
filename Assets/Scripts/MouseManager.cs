@@ -12,6 +12,8 @@ public class MouseManager : MonoBehaviour
 
     public int turnCount;
 
+    private bool hasPressedStart = false;
+
     List<BlockCounter> blocks;
 
     // Start is called before the first frame update
@@ -89,8 +91,12 @@ public class MouseManager : MonoBehaviour
 
                 if(hit.transform.tag == "Start")
                 {
-                   
-                    hit.transform.GetComponentInParent<ChickenCoup>().hasStartedSpawning = true;
+                    if (!hasPressedStart)
+                    {
+                        hit.transform.GetComponentInParent<ChickenCoup>().hasStartedSpawning = true;
+                        hasPressedStart = true;
+                    }
+                    
                 }
                 
             }

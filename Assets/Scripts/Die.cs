@@ -12,14 +12,22 @@ public class Die : MonoBehaviour
     }
     public void Death()
     {
-        gameManager.chickenNumber -= 1;
+        gameManager.deadGuyNumber -= 1;
 
         Destroy(this.gameObject);
     }
 
+    public void GoToHeaven()
+    {
+        gameManager.deadGuyNumber -= 1;
+        Locomotion locomotion = GetComponent<Locomotion>();
+        locomotion.isGoingToHeaven = true;
+        Destroy(this.gameObject, 6.0f);
+    }
+
     public void FlownAway()
     {
-        gameManager.chickenNumber -= 1;
+        gameManager.deadGuyNumber -= 1;
 
         Destroy(this.gameObject, 4.0f);
     }

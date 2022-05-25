@@ -17,6 +17,10 @@ TagManager:
   - FlameUI
   - SpearUI
   - BoilUI
+  - DeadGuy
+  - DeadGuyStart
+  - Zombie
+  - Ghost
   layers:
   - Default
   - TransparentFX
@@ -24,7 +28,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - DeadGuy
   - 
   - 
   - 

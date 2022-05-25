@@ -7,33 +7,50 @@ public class TrapTrigger : MonoBehaviour
 {
     GameManager gameManager;
 
+    Locomotion locomotion;
+
     AudioSource audioSource;
 
-    [SerializeField] ParticleSystem feathers;
-
-    [SerializeField] TextMeshProUGUI chickenCountText;
+    [SerializeField] TextMeshProUGUI deadGuyCountText;
 
     [SerializeField] AudioClip trapSound;
 
-    private int chickenCount = 0;
+    [SerializeField] AudioClip laugh;
+
+    [SerializeField] AudioClip organ;
+
+    [SerializeField] GameObject zombie;
+
+
+    private int deadGuyCount = 0;
 
     private void Start()
     {
         gameManager = FindObjectOfType<GameManager>();
         audioSource = GetComponent<AudioSource>();
-        chickenCountText.text = "0";
+        deadGuyCountText.text = "0";
         
+    }
+
+    private void Organ()
+    {
+        audioSource.PlayOneShot(organ);
+        locomotion.isGoingToHell = true;
+        locomotion.GetComponent<Animator>().SetBool("isGoingToHell", true);
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.transform.tag == "Chicken")
+        if(other.transform.tag == "DeadGuy")
         {
+            other.transform.tag = "Ghost";
+            other.transform.GetComponent<SwitchAvatar>().Switch();
+            locomotion = other.GetComponent<Locomotion>();
+            audioSource.PlayOneShot(laugh);
+            Invoke("Organ", 1.0f);
             
-            other.transform.GetComponent<Die>().Death();
-            feathers.Play();
-            chickenCount++;
-            chickenCountText.text = chickenCount.ToString();
+            deadGuyCount++;
+            deadGuyCountText.text = deadGuyCount.ToString();
 
             switch (transform.parent.name)
             {

@@ -13,7 +13,7 @@ public class ChickenCoup : MonoBehaviour
     
     [SerializeField] int chickensToSpawn;
 
-    [SerializeField] AudioClip[] spawnSounds;
+    [SerializeField] AudioClip spawnSounds;
 
     [SerializeField] AudioClip escapedChicken;
 
@@ -37,7 +37,7 @@ public class ChickenCoup : MonoBehaviour
     }
     private void Start()
     {
-        chickensToSpawn = gameManager.chickenNumber;
+        chickensToSpawn = gameManager.deadGuyNumber;
         audioSource = GetComponent<AudioSource>();
         if(transform.tag == "Start")
         {
@@ -69,13 +69,10 @@ public class ChickenCoup : MonoBehaviour
     private void SpawnChicken()
     {
         Instantiate(chicken, chickenSpawnPoint.position, Quaternion.Euler(0, 180f, 0));
-        audioSource.PlayOneShot(spawnSounds[spawnNumber]);
+        
+        audioSource.PlayOneShot(spawnSounds);
         spawnNumber++;
         
-        if(spawnNumber > spawnSounds.Length - 1)
-        {
-            spawnNumber = 0;
-        }
         chickensToSpawn--;
         chickenCount.text = chickensToSpawn.ToString();
     }

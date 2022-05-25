@@ -15,17 +15,9 @@ public class DirectionChanger : MonoBehaviour
 
         }
 
-        if (other.transform.tag == "Grass")
-        {
-
-        }
     }
 
-    private void OnTriggerExit(Collider other)
-    {
-        
-    }
-
+    
     private void Wait()
     {
         
