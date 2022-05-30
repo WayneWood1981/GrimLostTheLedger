@@ -5,14 +5,29 @@ using UnityEngine;
 public class BGMusic : MonoBehaviour
 {
 
+    public static BGMusic instance = null;
+
     AudioSource audioSource;
 
 
     // Start is called before the first frame update
     void Start()
     {
+
+        if(instance == null)
+        {
+            instance = this;
+        }else if (instance != this)
+        {
+            Destroy(gameObject);
+        }
+
         audioSource = GetComponent<AudioSource>();
-        audioSource.Play();
+        if (!audioSource.isPlaying)
+        {
+            audioSource.Play();
+        }
+        
         DontDestroyOnLoad(this);
 
     }

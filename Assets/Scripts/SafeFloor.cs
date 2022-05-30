@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class SafeFloor : MonoBehaviour
 {
+    [SerializeField] AudioClip organ;
+
+
     private GameObject bird;
 
     AudioSource audioSource;
 
-    [SerializeField]
-
-    AudioClip[] flapSounds;
+    
 
     private void Start()
     {
@@ -19,13 +20,12 @@ public class SafeFloor : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.transform.tag == "Chicken")
+        if(other.transform.tag == "DeadGuy")
         {
-            other.GetComponent<Locomotion>().isFlyingAway = true;
-            audioSource.PlayOneShot(flapSounds[Random.Range(0, flapSounds.Length)]);
-            other.GetComponent<Die>().FlownAway();
-            ChickenCoup homeCoup = FindObjectOfType<ChickenCoup>();
-            homeCoup.AddChickenToSafety();
+            other.GetComponent<Locomotion>().isGoingToHeaven = true;
+            audioSource.PlayOneShot(organ);
+            other.GetComponent<Die>().LostSoul();
+            
         }
     }
 

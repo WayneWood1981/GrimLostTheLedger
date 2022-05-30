@@ -10,9 +10,17 @@ public class DirectionChanger : MonoBehaviour
     {
         if(other.transform.tag == "DirectionChanger")
         {
-            newVec = other.transform.GetComponentInParent<BlockCounter>().currentVector;
-            Invoke("Wait", 0.4f);
 
+            newVec = other.transform.GetComponentInParent<BlockCounter>().currentVector;
+            
+            Invoke("Wait", 0.2f);
+           
+            
+
+        }
+        if(other.transform.tag == "InitialDirection")
+        {
+            transform.forward = newVec = other.transform.forward;
         }
 
     }

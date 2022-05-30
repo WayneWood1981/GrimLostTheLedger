@@ -48,15 +48,7 @@ public class Locomotion : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //cc = GetComponent<CharacterController>();
-        //cc.enabled = false;
         animator = GetComponent<Animator>();
-        if(this.tag == "Zombie")
-        {
-            Walk();
-        }
-        
-
     }
 
     // Update is called once per frame
@@ -71,10 +63,6 @@ public class Locomotion : MonoBehaviour
         
     }
 
-    private void FixedUpdate()
-    {
-        
-    }
 
     private void FlyingToHeaven()
     {
@@ -82,15 +70,17 @@ public class Locomotion : MonoBehaviour
         {
             speed = 0;
             rb.useGravity = false;
-            transform.LookAt(Camera.main.transform);
+            capCollider.enabled = false;
+            animator.SetBool("isGoingToHeaven", true);
             transform.Translate(Vector3.up * floatSpeed * Time.deltaTime);
         }
         if (isGoingToHell)
         {
             speed = 0;
             rb.useGravity = false;
-            transform.LookAt(Camera.main.transform);
-            transform.Translate(-Vector3.up * floatSpeed * Time.deltaTime);
+            capCollider.enabled = false;
+            animator.SetBool("isGoingToHell", true);
+            transform.Translate(-Vector3.up * floatSpeed / 2 * Time.deltaTime);
         }
     }
 
@@ -106,7 +96,7 @@ public class Locomotion : MonoBehaviour
             animator.SetTrigger("hitGround");
             audioSource.PlayOneShot(thump);
             poof.Play();
-            Invoke("Walk", 1.5f);
+            Invoke("Walk", 0.5f);
         }
     }
 
@@ -114,10 +104,16 @@ public class Locomotion : MonoBehaviour
 
     private void Walk()
     {
+       
         
-       // cc.enabled = true;
-        //rb.isKinematic = true;
-        isWalking = true;
+        if (this.tag != "DeadGuyBeginning")
+        {
+            isWalking = true;
+        }
+        else
+        {
+            animator.SetBool("isGoingToHell", true);
+        }
     }
 
     private void Move()
@@ -126,9 +122,6 @@ public class Locomotion : MonoBehaviour
         {
             transform.Translate(Vector3.forward * speed * Time.deltaTime);
         }
-        
-        
-        
 
     }
     

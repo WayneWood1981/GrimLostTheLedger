@@ -488,9 +488,9 @@ MonoBehaviour:
   chickenCount: {fileID: 1422358163}
   chicken: {fileID: 0}
   chickenSpawnPoint: {fileID: 0}
-  chickensToSpawn: 0
+  humansToSpawn: 0
   spawnSounds: {fileID: 0}
-  escapedChicken: {fileID: 8300000, guid: 38a39de226a3c402b80896e529f3fb28, type: 3}
+  escapedHuman: {fileID: 8300000, guid: 38a39de226a3c402b80896e529f3fb28, type: 3}
   spawnSpeed: 0
   hasStartedSpawning: 0
 --- !u!82 &7762147871628776187
@@ -736,7 +736,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 1.5
+      scalar: 3.9
       minScalar: 0.6
       maxCurve:
         serializedVersion: 2
@@ -789,7 +789,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0
+      scalar: 5.15
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -5842,7 +5842,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1.75
+      scalar: 1.56
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -5948,7 +5948,7 @@ ParticleSystem:
     startSizeZ:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 6
+      scalar: 27.48
       minScalar: 1
       maxCurve:
         serializedVersion: 2

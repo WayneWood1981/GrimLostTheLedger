@@ -21,6 +21,9 @@ TagManager:
   - DeadGuyStart
   - Zombie
   - Ghost
+  - DeadGuyBeginning
+  - InitialDirection
+  - Timer
   layers:
   - Default
   - TransparentFX

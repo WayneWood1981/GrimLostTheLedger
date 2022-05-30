@@ -25,8 +25,10 @@ public class CoupTrigger : MonoBehaviour
             other.transform.GetComponent<Die>().GoToHeaven();
             other.transform.GetComponent<Animator>().SetBool("isGoingToHeaven", true);
             gameManager.sendToHeavens++;
+            gameManager._SendToHeavenNumber--;
+            gameManager.UpdateTextMeshPros();
             GameObject endCoup = GameObject.FindGameObjectWithTag("End");
-            endCoup.GetComponentInParent<ChickenCoup>().AddChickenToSafety();
+            endCoup.GetComponentInParent<ChickenCoup>().AddHumanToSafety();
         }
         
     }

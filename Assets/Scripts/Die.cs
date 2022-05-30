@@ -13,8 +13,8 @@ public class Die : MonoBehaviour
     public void Death()
     {
         gameManager.deadGuyNumber -= 1;
-
-        Destroy(this.gameObject);
+        
+        Destroy(this.gameObject, 3.0f);
     }
 
     public void GoToHeaven()
@@ -22,7 +22,7 @@ public class Die : MonoBehaviour
         gameManager.deadGuyNumber -= 1;
         Locomotion locomotion = GetComponent<Locomotion>();
         locomotion.isGoingToHeaven = true;
-        Destroy(this.gameObject, 6.0f);
+        Destroy(this.gameObject, 3.0f);
     }
 
     public void FlownAway()
@@ -30,5 +30,11 @@ public class Die : MonoBehaviour
         gameManager.deadGuyNumber -= 1;
 
         Destroy(this.gameObject, 4.0f);
+    }
+
+    public void LostSoul()
+    {
+        gameManager.lostSoul++;
+        Destroy(this.gameObject, 3.0f);
     }
 }

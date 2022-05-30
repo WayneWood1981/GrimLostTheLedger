@@ -9,18 +9,23 @@ public class ButtonManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Cursor.SetCursor(zombieCursor, Vector2.zero, cursorMode: CursorMode.ForceSoftware);
+       // Cursor.SetCursor(zombieCursor, Vector2.zero, cursorMode: CursorMode.ForceSoftware);
     }
 
     public void PlayPressed()
     {
 
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene("Level_1");
     }
 
     public void HowToPressed()
     {
-        Debug.Log("How");
+        SceneManager.LoadScene("HowTo");
+    }
+
+    public void BackPressed()
+    {
+        SceneManager.LoadScene(1);
     }
 }
 

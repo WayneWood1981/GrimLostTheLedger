@@ -11,11 +11,11 @@ public class ChickenCoup : MonoBehaviour
 
     [SerializeField] Transform chickenSpawnPoint;
     
-    [SerializeField] int chickensToSpawn;
+    [SerializeField] int humansToSpawn;
 
     [SerializeField] AudioClip spawnSounds;
 
-    [SerializeField] AudioClip escapedChicken;
+    [SerializeField] AudioClip escapedHuman;
 
     private AudioSource audioSource;
 
@@ -26,7 +26,7 @@ public class ChickenCoup : MonoBehaviour
 
     private int savedChickens = 0;
 
-    public bool hasStartedSpawning = false;
+    public bool hasStartedSpawning;
 
     private int spawnNumber = 0;
 
@@ -37,11 +37,11 @@ public class ChickenCoup : MonoBehaviour
     }
     private void Start()
     {
-        chickensToSpawn = gameManager.deadGuyNumber;
+        humansToSpawn = gameManager.deadGuyNumber;
         audioSource = GetComponent<AudioSource>();
         if(transform.tag == "Start")
         {
-            chickenCount.text = chickensToSpawn.ToString();
+            chickenCount.text = humansToSpawn.ToString();
         }
         else
         {
@@ -55,9 +55,9 @@ public class ChickenCoup : MonoBehaviour
     {
         if (hasStartedSpawning && transform.tag == "Start")
         {
-            for (int i = 0; i < chickensToSpawn; i++)
+            for (int i = 0; i < humansToSpawn; i++)
             {
-                Invoke("SpawnChicken", i * spawnSpeed);
+                Invoke("SpawnHuman", i * spawnSpeed);
             }
             
             hasStartedSpawning = false;
@@ -66,22 +66,27 @@ public class ChickenCoup : MonoBehaviour
         
     }
 
-    private void SpawnChicken()
+    public void StartSpawning()
     {
-        Instantiate(chicken, chickenSpawnPoint.position, Quaternion.Euler(0, 180f, 0));
+        hasStartedSpawning = true;
+    }
+
+    private void SpawnHuman()
+    {
+        Instantiate(chicken, chickenSpawnPoint.position, transform.rotation);
         
         audioSource.PlayOneShot(spawnSounds);
         spawnNumber++;
         
-        chickensToSpawn--;
-        chickenCount.text = chickensToSpawn.ToString();
+        humansToSpawn--;
+        chickenCount.text = humansToSpawn.ToString();
     }
 
-    public void AddChickenToSafety()
+    public void AddHumanToSafety()
     {
         savedChickens++;
         chickenCount.text = savedChickens.ToString();
-        audioSource.PlayOneShot(escapedChicken);
+        audioSource.PlayOneShot(escapedHuman);
 
     }
 }
